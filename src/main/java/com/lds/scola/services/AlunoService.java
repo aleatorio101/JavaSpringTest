@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlunoService {
@@ -35,6 +36,11 @@ public class AlunoService {
         pessoaModel1.setEndereco(alunoModel.getEndereco());
 
         return alunoRepository.save(alunoModel);
+    }
+
+    public AlunoModel findById(Long id) {
+        return alunoRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Aluno não encontrado"));
     }
 
 

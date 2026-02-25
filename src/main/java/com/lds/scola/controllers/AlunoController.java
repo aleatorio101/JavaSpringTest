@@ -21,7 +21,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public AlunoModel criar( @RequestBody AlunoModel alunoModel) {
+    public AlunoModel criarAluno( @RequestBody AlunoModel alunoModel) {
         return alunoService.criarAluno(alunoModel);
     }
 
@@ -29,10 +29,11 @@ public class AlunoController {
     public ResponseEntity<String> deletar(@PathVariable Long id){
         alunoService.deletarAluno(id);
         return ResponseEntity.ok("Entidade id: " + id + " deletado com sucesso");
+
     }
 
-    @PutMapping("/{id}")
-    public AlunoModel atualizar(@RequestBody AlunoModel alunoModel, @PathVariable Long id){
-        return alunoService.atualizarAluno(alunoModel, id);
+    @GetMapping("/{id}")
+    public AlunoModel findById( @PathVariable Long id){
+        return alunoService.findById(id);
     }
 }
