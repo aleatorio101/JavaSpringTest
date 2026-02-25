@@ -17,15 +17,15 @@ public class AlunoService {
         return alunoRepository.findAll();
     }
 
-    public AlunoModel criar(AlunoModel alunoModel) {
+    public AlunoModel criarAluno(AlunoModel alunoModel) {
         return alunoRepository.save(alunoModel);
     }
 
-    public void deletar(Long id){
+    public void deletarAluno(Long id){
         alunoRepository.deleteById(id);
     }
 
-    public AlunoModel atualizar (AlunoModel alunoModel, Long id){
+    public AlunoModel atualizarAluno(AlunoModel alunoModel, Long id){
 
         AlunoModel pessoaModel1 = alunoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
