@@ -1,5 +1,6 @@
 package com.lds.scola.models;
 
+import com.lds.scola.enums.Estudante;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class AlunoModel {
     private String nome;
     private String matricula;
     private String endereco;
+    private Estudante situacao;
 
     public AlunoModel() {
 
@@ -47,5 +49,13 @@ public class AlunoModel {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public Estudante getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Estudante situacao) {
+        this.situacao = situacao;
     }
 }

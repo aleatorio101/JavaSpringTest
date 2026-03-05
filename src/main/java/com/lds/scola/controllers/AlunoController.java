@@ -36,4 +36,9 @@ public class AlunoController {
     public AlunoModel findById( @PathVariable Long id){
         return alunoService.findById(id);
     }
+
+    @PutMapping("/{id}")
+    public AlunoModel atualizar(@PathVariable Long id, @RequestBody AlunoModel alunoModel){
+        return alunoService.atualizarAluno(id, alunoModel);
+    }
 }

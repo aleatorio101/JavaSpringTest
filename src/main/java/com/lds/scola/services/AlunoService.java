@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AlunoService {
@@ -26,22 +25,20 @@ public class AlunoService {
         alunoRepository.deleteById(id);
     }
 
-    public AlunoModel atualizarAluno(AlunoModel alunoModel, Long id){
+    public AlunoModel atualizarAluno(Long id, AlunoModel alunoModel){
 
-        AlunoModel pessoaModel1 = alunoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+        AlunoModel aluno = alunoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
 
-        pessoaModel1.setNome(alunoModel.getNome());
-        pessoaModel1.setMatricula(alunoModel.getMatricula());
-        pessoaModel1.setEndereco(alunoModel.getEndereco());
+        aluno.setNome(alunoModel.getNome());
+        aluno.setMatricula(alunoModel.getMatricula());
 
-        return alunoRepository.save(alunoModel);
+        return alunoRepository.save(aluno);
     }
 
     public AlunoModel findById(Long id) {
         return alunoRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Aluno não encontrado"));
     }
-
 
 }
